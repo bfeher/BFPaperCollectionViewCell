@@ -1,40 +1,28 @@
-BFPaperTableViewCell
+BFPaperCollectionViewCell
 ====================
-[![CocoaPods](https://img.shields.io/cocoapods/v/BFPaperTableViewCell.svg?style=flat)](https://github.com/bfeher/BFPaperTableViewCell)
-
-> A subclass of UITableViewCell inspired by Google's Material Design: Paper Elements.
-
-![Animated Screenshot](https://raw.githubusercontent.com/bfeher/BFPaperTableViewCell/master/BFPaperTableViewCellDemoGif.gif "Animated Screenshot")
-
+> A subclass of UICollectionViewCell inspired by Google's Material Design: Paper Elements. Based on [BFPaperTableViewCell](https://github.com/bfeher/BFPaperTableViewCell)
 
 About
 ---------
-_BFPaperTableViewCell_ is a subclass of UITableViewCell that behaves much like the new paper table cells from Google's Material Design Labs.
+_BFPaperCollectionViewCell_ is a subclass of UICollectionViewCell that behaves much like the new paper cells from Google's Material Design Labs.
 All animation are asynchronous and are performed on sublayers.
-_BFPaperTableViewCells_ work right away with pleasing default behaviors, however they can be easily customized! The tap-circle color, background fade color, background fade alpha, background highlight (linger or fade away), tap-circle ripple locaiton, and tap-circle diameter are all readily customizable via public properties.
-
-By default, _BFPaperTableViewCells_ use "Smart Color" which will match the tap-circle and background fade colors to the color of the `textLabel`.
-You can turn off Smart Color by setting the property, `.usesSmartColor` to `NO`. If you disable Smart Color, a gray color will be used by default for both the tap-circle and the background color fade.
-You can set your own colors via: `.tapCircleColor` and `.backgroundFadeColor`. Note that setting these disables Smart Color.
+_BFPaperCollectionViewCells_ work right away with pleasing default behaviors, however they can be easily customized! The tap-circle color, background fade color, background fade alpha, background highlight (linger or fade away), tap-circle ripple locaiton, and tap-circle diameter are all readily customizable via public properties.
 
 ## Properties
-`BOOL usesSmartColor` <br />
-A flag to set YES to use Smart Color, or NO to use a custom color scheme. While Smart Color is the default (usesSmartColor = YES), customization is cool too.
-
 `UIColor *tapCircleColor` <br />
 The UIColor to use for the circle which appears where you tap. NOTE: Setting this defeats the "Smart Color" ability of the tap circle. Alpha values less than 1 are recommended.
 
 `UIColor *backgroundFadeColor` <br />
-The UIColor to fade the background to. NOTE: Setting this defeats the "Smart Color" ability of the background fade. An alpha value of 1 is recommended, as the fade is a constant (`bfPaperCell_fadeConstant`) defined in the BFPaperTableViewCell.m. This bothers me too.
+The UIColor to fade the background to. NOTE: Setting this defeats the "Smart Color" ability of the background fade. An alpha value of 1 is recommended, as the fade is a constant (`bfPaperCell_fadeConstant`) defined in the BFPaperCollectionViewCell.m. This bothers me too.
 
 `CGFloat backgroundFadeAlpha` <br />
-A CGFloat value between 0 and 1 to which the background will fade into upon selection. Default is `bfPaperCell_fadeConstant` which is defined in BFPaperTableViewCell.m.
+A CGFloat value between 0 and 1 to which the background will fade into upon selection. Default is `bfPaperCell_fadeConstant` which is defined in BFPaperCollectionViewCell.m.
 
 `BOOL letBackgroundLinger`<br />
-A BOOL flag that determines whether or not to keep the background around after a tap, essentially "highlighting/selecting" the cell. Note that this does not trigger `setSelected:`! It is purely aesthetic. Also this kinda clashes with `cell.selectionStyle`, so by defualt the constructor sets that to `UITableViewCellSelectionStyleNone`. Default is YES.
+A BOOL flag that determines whether or not to keep the background around after a tap, essentially "highlighting/selecting" the cell. Purely aesthetic. Default is YES.
 
 `CGFloat tapCircleDiameter` <br />
-The CGFloat value representing the Diameter of the tap-circle. By default it will be calculated to almost be big enough to cover up the whole background. Any value less than zero will result in default being used. Three pleasing sizes, `bfPaperTableViewCell_tapCircleDiameterSmall`, `bfPaperTableViewCell_tapCircleDiameterMedium`, and `bfPaperTableViewCell_tapCircleDiameterLarge` are also available for use.
+The CGFloat value representing the Diameter of the tap-circle. By default it will be calculated to almost be big enough to cover up the whole background. Any value less than zero will result in default being used. Three pleasing sizes, `bfPaperCollectionViewCell_tapCircleDiameterSmall`, `bfPaperCollectionViewCell_tapCircleDiameterMedium`, and `bfPaperCollectionViewCell_tapCircleDiameterLarge` are also available for use.
 
 `BOOL rippleFromTapLocation`<br />
 A flag to set to YES to have the tap-circle ripple from point of touch. If this is set to NO, the tap-circle will always ripple from the center of the button. Default is YES.
@@ -42,35 +30,33 @@ A flag to set to YES to have the tap-circle ripple from point of touch. If this 
 
 Usage
 ---------
-Add the _BFPaperTableViewCell_ header and implementation file to your project. (.h & .m)
+Add the _BFPaperCollectionViewCell_ header and implementation file to your project. (.h & .m)
 
-After that, you can use it just like any other `UITableViewCell`. 
+After that, you can use it just like any other `UICollectionViewCell`. 
 
-If you use storyboards with prototype cells, be sure to change the prototype cell's class to _BFPaperTableViewCell_!
+If you use storyboards with prototype cells, be sure to change the prototype cell's class to _BFPaperCollectionViewCell_, and be sure to set the reuse identifier to that with which you register in the below code snippet!
 
 ###Example
 ```objective-c
-// Register BFPaperTableViewCell for our tableView in viewDidLoad:
+// Register BFPaperCollectionViewCell for our collectionView in viewDidLoad:
 - (void)viewDidLoad
 {
   ...
-  [self.tableView registerClass:[BFPaperTableViewCell class] forCellReuseIdentifier:@"BFPaperCell"];  // NOTE: This is not required if we declared a prototype cell in our storyboard (which this example project does). This is here purely for information purposes.
+  [self.collectionView registerClass:[BFPaperCollectionViewCell class] forCellWithReuseIdentifier:@"BFPaperCell"];
   ...
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewCell *)tableView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-  BFPaperTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BFPaperCell" forIndexPath:indexPath];
-  if (!cell) {
-    cell = [[BFPaperTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"BFPaperCell"];
-  }
+  BFPaperCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BFPaperCell" forIndexPath:indexPath];
+
   cell.rippleFromTapLocation = NO; // Will always ripple from center if NO.
   cell.tapCircleColor = [[UIColor paperColorDeepPurple] colorWithAlphaComponent:0.3f];
   cell.backgroundFadeColor = [UIColor paperColorBlue];
   cell.backgroundFadeAlpha = 0.7f;
   cell.letBackgroundLinger = NO;
-  cell.tapCircleDiameter = bfPaperTableViewCell_tapCircleDiameterSmall;
+  cell.tapCircleDiameter = bfPaperCollectionViewCell_tapCircleDiameterSmall;
   return cell;
 }
 ```
@@ -82,15 +68,15 @@ Cocoapods
 CocoaPods are the best way to manage library dependencies in Objective-C projects.
 Learn more at http://cocoapods.org
 
-Add this to your podfile to add _BFPaperTableViewCell_ to your project.
+Add this to your podfile to add _BFPaperCollectionViewCell_ to your project.
 ```ruby
 platform :ios, '7.0'
-pod 'BFPaperTableViewCell', '~> 1.3.1'
+pod 'BFPaperCollectionViewCell', '~> 1.3.1'
 ```
 
 
 License
 --------
-_BFPaperTableViewCell_ uses the MIT License:
+_BFPaperCollectionViewCell_ uses the MIT License:
 
-> Please see included [LICENSE file](https://raw.githubusercontent.com/bfeher/BFPaperTableViewCell/master/LICENSE.md).
+> Please see included LICENSE file.

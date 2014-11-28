@@ -1,6 +1,6 @@
 //
 //  BFPaperViewController.m
-//  BFPaperTableViewCell
+//  BFPaperCollectionViewCell
 //
 //  Created by Bence Feher on 7/17/14.
 //  Copyright (c) 2014 Bence Feher. All rights reserved.
@@ -30,7 +30,7 @@
 
 #import "BFPaperViewController.h"
 // Classes:
-#import "BFPaperTableViewCell.h"
+#import "BFPaperCollectionViewCell.h"
 // Pods:
 #import "UIColor+BFPaperColors.h"
 
@@ -55,18 +55,18 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"BFPaperTableViewCell";
+    self.title = @"BFPaperCollectionViewCell";
     
-    // Register BFPaperTableViewCell for our tableView:
-    [self.tableView registerClass:[BFPaperTableViewCell class] forCellReuseIdentifier:@"BFPaperCell"];  // NOTE: This is not required if we declared a prototype cell in our storyboard (which this example project does). This is here purely for information purposes.
+    // Register BFPaperCollectionViewCell for our tableView:
+    [self.collectionView registerClass:[BFPaperCollectionViewCell class] forCellWithReuseIdentifier:@"BFPaperCell"];
     
     // Fill up an array with all the basic BFPaperColors:
     self.colors = @[[UIColor paperColorRed], [UIColor paperColorPink], [UIColor paperColorPurple], [UIColor paperColorDeepPurple], [UIColor paperColorIndigo], [UIColor paperColorBlue], [UIColor paperColorLightBlue], [UIColor paperColorCyan], [UIColor paperColorTeal], [UIColor paperColorGreen], [UIColor paperColorLightGreen], [UIColor paperColorLime], [UIColor paperColorYellow], [UIColor paperColorAmber], [UIColor  paperColorDeepOrange], [UIColor paperColorBrown], [UIColor paperColorGray], [UIColor paperColorBlueGray], [UIColor paperColorGray700], [UIColor paperColorGray700]];
     
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
+    self.collectionView.dataSource = self;
+    self.collectionView.delegate = self;
     
-    self.tableView.backgroundColor = [UIColor colorWithRed:0.7 green:0.98 blue:0.7 alpha:1];
+    self.collectionView.backgroundColor = [UIColor colorWithRed:0.7 green:0.98 blue:0.7 alpha:1];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -75,8 +75,8 @@
     
     UIImageView *bgIV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg-blue-white-arrow"]];
     bgIV.contentMode = UIViewContentModeScaleAspectFill;
-    bgIV.frame = self.tableView.frame;
-    self.tableView.backgroundView = bgIV;
+    bgIV.frame = self.collectionView.frame;
+    self.collectionView.backgroundView = bgIV;
 }
 
 - (void)didReceiveMemoryWarning
@@ -96,121 +96,88 @@
  }
  */
 
-#pragma mark - Table view delegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Every 5th cell gets to push:
-    if (indexPath.row % 5 == 0) {
-        [self performSegueWithIdentifier:@"push" sender:self];
-    }
-}
+#pragma mark - collection view delegate
+//- (void) collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    // Every 5th cell gets to push:
+//    if (indexPath.row % 5 == 0) {
+//        [self performSegueWithIdentifier:@"push" sender:self];
+//    }
+//}
 
 
-#pragma mark - Table view data source
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 64;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+#pragma mark - collection view data source
+    
+- (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     // Return the number of sections.
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
     return self.colors.count * 2; // We will have one set of cells with a white background and colored text, and one set with a colored background and white text.
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    BFPaperTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BFPaperCell" forIndexPath:indexPath];
-    
-    if (!cell) {
-        cell = [[BFPaperTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"BFPaperCell"];
-    }
+    BFPaperCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BFPaperCell" forIndexPath:indexPath];
     
     // Configure the cell...
     
     // This is a whole bunch of really BAD ways to customize cells that I'm, just doing for the demo.
-    // I hope you won't attempt to customize your cells in such a way and would rather sub-class BFPaperTableViewCell and do your customizations in said subclass.
+    // I hope you won't attempt to customize your cells in such a way and would rather sub-class BFPaperCollectionViewCell and do your customizations in said subclass.
     // Or at least just don't do it like this ;p
     
-    // Every 5th cell gets to push, so give it a disclosure indicator:
-    if (indexPath.row % 5 == 0) {
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
-    else {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
+    // TODO: we should subclass and add a label in the subclass so that we can label the example cells. Commenting out the
+    //       label setup for now.
     
     // Even indexed cells will ripple from the center while odd ones will ripple from tap location:
     if (indexPath.row % 2 == 0) {
         cell.rippleFromTapLocation = NO;
-        cell.textLabel.text = @"Ripple from Center";
+        //cell.textLabel.text = @"Ripple from Center";
     }
     else {
         cell.rippleFromTapLocation = YES;
-        cell.textLabel.text = @"Ripple from tap location";
+        //cell.textLabel.text = @"Ripple from tap location";
     }
 
-    // Demo 2 clear cells:
+    // Demo clear cell:
     if (indexPath.row == 0) {
         cell.backgroundColor = [UIColor clearColor];
-        cell.textLabel.textColor = [UIColor paperColorLimeA400];
-        cell.usesSmartColor = YES;
-        cell.textLabel.text = @"Clear, Smart Color";
-        cell.tapCircleDiameter = bfPaperTableViewCell_tapCircleDiameterDefault;
-    }
-    else if (indexPath.row == 1) {
-        cell.backgroundColor = [UIColor clearColor];
-        cell.textLabel.textColor = [UIColor paperColorLimeA400];
-        cell.usesSmartColor = NO;
-        cell.textLabel.text = @"Clear, !Smart Color";
-        cell.tapCircleDiameter = bfPaperTableViewCell_tapCircleDiameterDefault;
+        //cell.textLabel.textColor = [UIColor paperColorLimeA400];
+        //cell.textLabel.text = @"Clear";
+        cell.tapCircleDiameter = bfPaperCollectionViewCell_tapCircleDiameterDefault;
     }
     // The rest of the first half should be white with colored text:
     else if (indexPath.row < self.colors.count){
         cell.backgroundColor = [UIColor whiteColor];
-        cell.textLabel.textColor = [self.colors objectAtIndex:indexPath.row];
-        cell.usesSmartColor = YES;
-        cell.tapCircleDiameter = bfPaperTableViewCell_tapCircleDiameterDefault;
+        //cell.textLabel.textColor = [self.colors objectAtIndex:indexPath.row];
+        cell.tapCircleDiameter = bfPaperCollectionViewCell_tapCircleDiameterDefault;
     }
     // After that, just color their background and give them white text:
     else if (!(indexPath.row > (self.colors.count * 2) - 3)) {
         cell.backgroundColor = [self.colors objectAtIndex:indexPath.row % self.colors.count];
-        cell.textLabel.textColor = [UIColor whiteColor];
-        cell.usesSmartColor = YES;
-        cell.tapCircleDiameter = bfPaperTableViewCell_tapCircleDiameterDefault;
+        //cell.textLabel.textColor = [UIColor whiteColor];
+        cell.tapCircleDiameter = bfPaperCollectionViewCell_tapCircleDiameterDefault;
     }
     // Customize last two cells:
     else {//if (indexPath.row > (self.colors.count * 2) - 3) {
-        cell.textLabel.text = @"Customized!";
+        //cell.textLabel.text = @"Customized!";
         cell.backgroundColor = [UIColor paperColorDeepPurple];
-        cell.textLabel.textColor = [UIColor paperColorLightBlue];
-        cell.tapCircleDiameter = bfPaperTableViewCell_tapCircleDiameterSmall;
+        //cell.textLabel.textColor = [UIColor paperColorLightBlue];
+        cell.tapCircleDiameter = bfPaperCollectionViewCell_tapCircleDiameterSmall;
         cell.tapCircleColor = [[UIColor paperColorLimeA400] colorWithAlphaComponent:0.7];
         cell.backgroundFadeColor = [UIColor whiteColor];
         cell.backgroundFadeAlpha = 1;
         cell.letBackgroundLinger = NO;
     }
     
-    cell.textLabel.backgroundColor = [UIColor clearColor];  // If it's not clear, the tap circles and fade layers are occluded by this label's background.
+    //cell.textLabel.backgroundColor = [UIColor clearColor];  // If it's not clear, the tap circles and fade layers are occluded by this label's background.
     
     return cell;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    return [UIView new];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 0;
 }
 
 @end

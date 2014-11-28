@@ -1,22 +1,22 @@
 //
-//  SubclassOfPaperTableViewCell.m
-//  BFPaperTableViewCell
+//  SubclassOfPaperCollectionViewCell.m
+//  BFPaperCollectionViewCell
 //
-//  This is an example of how to subclass BFPaperTableViewCell.
+//  This is an example of how to subclass BFPaperCollectionViewCell.
 //  Note that you MUST call [super awakeFromNib] from within awakeFromNib!
 //
 //  Created by Bence Feher on 11/14/14.
 //  Copyright (c) 2014 Bence Feher. All rights reserved.
 //
 
-#import "SubclassOfPaperTableViewCell.h"
+#import "SubclassOfPaperCollectionViewCell.h"
 #import "UIColor+BFPaperColors.h"
 
-@implementation SubclassOfPaperTableViewCell
+@implementation SubclassOfPaperCollectionViewCell
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (instancetype)init
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    self = [super init];
     if (self) {
         [self customSetup];
     }
@@ -41,21 +41,14 @@
 - (void)customSetup
 {
     // Even though defaults values are cool, I'm setting all of the customizable options here as an example:
-    self.usesSmartColor = NO;
     self.tapCircleColor = [[UIColor paperColorLimeA400] colorWithAlphaComponent:0.6f];
-    self.tapCircleDiameter = bfPaperTableViewCell_tapCircleDiameterSmall;
+    self.tapCircleDiameter = bfPaperCollectionViewCell_tapCircleDiameterSmall;
     self.rippleFromTapLocation = YES;
     self.backgroundFadeColor = [UIColor whiteColor];
     self.backgroundFadeAlpha = 0.2f;
     self.letBackgroundLinger = YES;
     
     // Other setup (eg. text labels, image views, etc.):
-}
-
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated]; // Be sure to call super!
 }
 
 @end

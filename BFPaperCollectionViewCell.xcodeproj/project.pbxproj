@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C252AB3C7E6944848065E9E3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB931C51F2904B9DB9C8D5D4 /* libPods.a */; };
-		F42B5BA91978DD0000D6F4B5 /* BFPaperTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F42B5BA81978DD0000D6F4B5 /* BFPaperTableViewCell.m */; };
-		F4533CD81A157DA500DF9E50 /* SubclassOfPaperTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4533CD71A157DA500DF9E50 /* SubclassOfPaperTableViewCell.m */; };
+		F42B5BA91978DD0000D6F4B5 /* BFPaperCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F42B5BA81978DD0000D6F4B5 /* BFPaperCollectionViewCell.m */; };
+		F4533CD81A157DA500DF9E50 /* SubclassOfPaperCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4533CD71A157DA500DF9E50 /* SubclassOfPaperCollectionViewCell.m */; };
 		F48E73AE1977B45700982A46 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48E73AD1977B45700982A46 /* Foundation.framework */; };
 		F48E73B01977B45700982A46 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48E73AF1977B45700982A46 /* CoreGraphics.framework */; };
 		F48E73B21977B45700982A46 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48E73B11977B45700982A46 /* UIKit.framework */; };
@@ -23,7 +23,6 @@
 		F48E73CE1977B45700982A46 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48E73AD1977B45700982A46 /* Foundation.framework */; };
 		F48E73CF1977B45700982A46 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48E73B11977B45700982A46 /* UIKit.framework */; };
 		F48E73D71977B45700982A46 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F48E73D51977B45700982A46 /* InfoPlist.strings */; };
-		F48E73D91977B45700982A46 /* BFPaperTableViewCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F48E73D81977B45700982A46 /* BFPaperTableViewCellTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +31,7 @@
 			containerPortal = F48E73A21977B45700982A46 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = F48E73A91977B45700982A46;
-			remoteInfo = BFPaperTableViewCell;
+			remoteInfo = BFPaperCollectionViewCell;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -40,29 +39,28 @@
 		22A0C51F80BC08B279E64E78 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		50256C2DBF46E09557E5A3C4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AB931C51F2904B9DB9C8D5D4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		F42B5BA71978DD0000D6F4B5 /* BFPaperTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BFPaperTableViewCell.h; path = ../Classes/BFPaperTableViewCell.h; sourceTree = "<group>"; };
-		F42B5BA81978DD0000D6F4B5 /* BFPaperTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BFPaperTableViewCell.m; path = ../Classes/BFPaperTableViewCell.m; sourceTree = "<group>"; };
-		F4533CD61A157DA500DF9E50 /* SubclassOfPaperTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubclassOfPaperTableViewCell.h; sourceTree = "<group>"; };
-		F4533CD71A157DA500DF9E50 /* SubclassOfPaperTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubclassOfPaperTableViewCell.m; sourceTree = "<group>"; };
-		F48E73AA1977B45700982A46 /* BFPaperTableViewCell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BFPaperTableViewCell.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F42B5BA71978DD0000D6F4B5 /* BFPaperCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BFPaperCollectionViewCell.h; path = ../Classes/BFPaperCollectionViewCell.h; sourceTree = "<group>"; };
+		F42B5BA81978DD0000D6F4B5 /* BFPaperCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BFPaperCollectionViewCell.m; path = ../Classes/BFPaperCollectionViewCell.m; sourceTree = "<group>"; };
+		F4533CD61A157DA500DF9E50 /* SubclassOfPaperCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubclassOfPaperCollectionViewCell.h; sourceTree = "<group>"; };
+		F4533CD71A157DA500DF9E50 /* SubclassOfPaperCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubclassOfPaperCollectionViewCell.m; sourceTree = "<group>"; };
+		F48E73AA1977B45700982A46 /* BFPaperCollectionViewCell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BFPaperCollectionViewCell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F48E73AD1977B45700982A46 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F48E73AF1977B45700982A46 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		F48E73B11977B45700982A46 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		F48E73B51977B45700982A46 /* BFPaperTableViewCell-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BFPaperTableViewCell-Info.plist"; sourceTree = "<group>"; };
+		F48E73B51977B45700982A46 /* BFPaperCollectionViewCell-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BFPaperCollectionViewCell-Info.plist"; sourceTree = "<group>"; };
 		F48E73B71977B45700982A46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F48E73B91977B45700982A46 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F48E73BB1977B45700982A46 /* BFPaperTableViewCell-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BFPaperTableViewCell-Prefix.pch"; sourceTree = "<group>"; };
+		F48E73BB1977B45700982A46 /* BFPaperCollectionViewCell-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BFPaperCollectionViewCell-Prefix.pch"; sourceTree = "<group>"; };
 		F48E73BC1977B45700982A46 /* BFPaperAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFPaperAppDelegate.h; sourceTree = "<group>"; };
 		F48E73BD1977B45700982A46 /* BFPaperAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFPaperAppDelegate.m; sourceTree = "<group>"; };
 		F48E73C01977B45700982A46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F48E73C21977B45700982A46 /* BFPaperViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFPaperViewController.h; sourceTree = "<group>"; };
 		F48E73C31977B45700982A46 /* BFPaperViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFPaperViewController.m; sourceTree = "<group>"; };
 		F48E73C51977B45700982A46 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		F48E73CB1977B45700982A46 /* BFPaperTableViewCellTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BFPaperTableViewCellTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F48E73CB1977B45700982A46 /* BFPaperCollectionViewCellTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BFPaperCollectionViewCellTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F48E73CC1977B45700982A46 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		F48E73D41977B45700982A46 /* BFPaperTableViewCellTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BFPaperTableViewCellTests-Info.plist"; sourceTree = "<group>"; };
+		F48E73D41977B45700982A46 /* BFPaperCollectionViewCellTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BFPaperCollectionViewCellTests-Info.plist"; sourceTree = "<group>"; };
 		F48E73D61977B45700982A46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F48E73D81977B45700982A46 /* BFPaperTableViewCellTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFPaperTableViewCellTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,8 +101,8 @@
 			isa = PBXGroup;
 			children = (
 				F48E73E21977BAF000982A46 /* Classes */,
-				F48E73B31977B45700982A46 /* BFPaperTableViewCell */,
-				F48E73D21977B45700982A46 /* BFPaperTableViewCellTests */,
+				F48E73B31977B45700982A46 /* BFPaperCollectionViewCell */,
+				F48E73D21977B45700982A46 /* BFPaperCollectionViewCellTests */,
 				F48E73AC1977B45700982A46 /* Frameworks */,
 				F48E73AB1977B45700982A46 /* Products */,
 				D37601D0F6742D463340DF2D /* Pods */,
@@ -114,8 +112,8 @@
 		F48E73AB1977B45700982A46 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F48E73AA1977B45700982A46 /* BFPaperTableViewCell.app */,
-				F48E73CB1977B45700982A46 /* BFPaperTableViewCellTests.xctest */,
+				F48E73AA1977B45700982A46 /* BFPaperCollectionViewCell.app */,
+				F48E73CB1977B45700982A46 /* BFPaperCollectionViewCellTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -132,11 +130,11 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F48E73B31977B45700982A46 /* BFPaperTableViewCell */ = {
+		F48E73B31977B45700982A46 /* BFPaperCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				F4533CD61A157DA500DF9E50 /* SubclassOfPaperTableViewCell.h */,
-				F4533CD71A157DA500DF9E50 /* SubclassOfPaperTableViewCell.m */,
+				F4533CD61A157DA500DF9E50 /* SubclassOfPaperCollectionViewCell.h */,
+				F4533CD71A157DA500DF9E50 /* SubclassOfPaperCollectionViewCell.m */,
 				F48E73BC1977B45700982A46 /* BFPaperAppDelegate.h */,
 				F48E73BD1977B45700982A46 /* BFPaperAppDelegate.m */,
 				F48E73BF1977B45700982A46 /* Main.storyboard */,
@@ -145,33 +143,32 @@
 				F48E73C51977B45700982A46 /* Images.xcassets */,
 				F48E73B41977B45700982A46 /* Supporting Files */,
 			);
-			path = BFPaperTableViewCell;
+			path = BFPaperCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		F48E73B41977B45700982A46 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F48E73B51977B45700982A46 /* BFPaperTableViewCell-Info.plist */,
+				F48E73B51977B45700982A46 /* BFPaperCollectionViewCell-Info.plist */,
 				F48E73B61977B45700982A46 /* InfoPlist.strings */,
 				F48E73B91977B45700982A46 /* main.m */,
-				F48E73BB1977B45700982A46 /* BFPaperTableViewCell-Prefix.pch */,
+				F48E73BB1977B45700982A46 /* BFPaperCollectionViewCell-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F48E73D21977B45700982A46 /* BFPaperTableViewCellTests */ = {
+		F48E73D21977B45700982A46 /* BFPaperCollectionViewCellTests */ = {
 			isa = PBXGroup;
 			children = (
-				F48E73D81977B45700982A46 /* BFPaperTableViewCellTests.m */,
 				F48E73D31977B45700982A46 /* Supporting Files */,
 			);
-			path = BFPaperTableViewCellTests;
+			path = BFPaperCollectionViewCellTests;
 			sourceTree = "<group>";
 		};
 		F48E73D31977B45700982A46 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F48E73D41977B45700982A46 /* BFPaperTableViewCellTests-Info.plist */,
+				F48E73D41977B45700982A46 /* BFPaperCollectionViewCellTests-Info.plist */,
 				F48E73D51977B45700982A46 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -180,19 +177,19 @@
 		F48E73E21977BAF000982A46 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				F42B5BA71978DD0000D6F4B5 /* BFPaperTableViewCell.h */,
-				F42B5BA81978DD0000D6F4B5 /* BFPaperTableViewCell.m */,
+				F42B5BA71978DD0000D6F4B5 /* BFPaperCollectionViewCell.h */,
+				F42B5BA81978DD0000D6F4B5 /* BFPaperCollectionViewCell.m */,
 			);
 			name = Classes;
-			path = BFPaperTableViewCell;
+			path = BFPaperCollectionViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F48E73A91977B45700982A46 /* BFPaperTableViewCell */ = {
+		F48E73A91977B45700982A46 /* BFPaperCollectionViewCell */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F48E73DC1977B45700982A46 /* Build configuration list for PBXNativeTarget "BFPaperTableViewCell" */;
+			buildConfigurationList = F48E73DC1977B45700982A46 /* Build configuration list for PBXNativeTarget "BFPaperCollectionViewCell" */;
 			buildPhases = (
 				D3F7EFDC51654A9C9EAC3917 /* Check Pods Manifest.lock */,
 				F48E73A61977B45700982A46 /* Sources */,
@@ -204,14 +201,14 @@
 			);
 			dependencies = (
 			);
-			name = BFPaperTableViewCell;
-			productName = BFPaperTableViewCell;
-			productReference = F48E73AA1977B45700982A46 /* BFPaperTableViewCell.app */;
+			name = BFPaperCollectionViewCell;
+			productName = BFPaperCollectionViewCell;
+			productReference = F48E73AA1977B45700982A46 /* BFPaperCollectionViewCell.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F48E73CA1977B45700982A46 /* BFPaperTableViewCellTests */ = {
+		F48E73CA1977B45700982A46 /* BFPaperCollectionViewCellTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F48E73DF1977B45700982A46 /* Build configuration list for PBXNativeTarget "BFPaperTableViewCellTests" */;
+			buildConfigurationList = F48E73DF1977B45700982A46 /* Build configuration list for PBXNativeTarget "BFPaperCollectionViewCellTests" */;
 			buildPhases = (
 				F48E73C71977B45700982A46 /* Sources */,
 				F48E73C81977B45700982A46 /* Frameworks */,
@@ -222,9 +219,9 @@
 			dependencies = (
 				F48E73D11977B45700982A46 /* PBXTargetDependency */,
 			);
-			name = BFPaperTableViewCellTests;
-			productName = BFPaperTableViewCellTests;
-			productReference = F48E73CB1977B45700982A46 /* BFPaperTableViewCellTests.xctest */;
+			name = BFPaperCollectionViewCellTests;
+			productName = BFPaperCollectionViewCellTests;
+			productReference = F48E73CB1977B45700982A46 /* BFPaperCollectionViewCellTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -242,7 +239,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F48E73A51977B45700982A46 /* Build configuration list for PBXProject "BFPaperTableViewCell" */;
+			buildConfigurationList = F48E73A51977B45700982A46 /* Build configuration list for PBXProject "BFPaperCollectionViewCell" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -255,8 +252,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F48E73A91977B45700982A46 /* BFPaperTableViewCell */,
-				F48E73CA1977B45700982A46 /* BFPaperTableViewCellTests */,
+				F48E73A91977B45700982A46 /* BFPaperCollectionViewCell */,
+				F48E73CA1977B45700982A46 /* BFPaperCollectionViewCellTests */,
 			);
 		};
 /* End PBXProject section */
@@ -320,8 +317,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4533CD81A157DA500DF9E50 /* SubclassOfPaperTableViewCell.m in Sources */,
-				F42B5BA91978DD0000D6F4B5 /* BFPaperTableViewCell.m in Sources */,
+				F4533CD81A157DA500DF9E50 /* SubclassOfPaperCollectionViewCell.m in Sources */,
+				F42B5BA91978DD0000D6F4B5 /* BFPaperCollectionViewCell.m in Sources */,
 				F48E73C41977B45700982A46 /* BFPaperViewController.m in Sources */,
 				F48E73BA1977B45700982A46 /* main.m in Sources */,
 				F48E73BE1977B45700982A46 /* BFPaperAppDelegate.m in Sources */,
@@ -332,7 +329,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F48E73D91977B45700982A46 /* BFPaperTableViewCellTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,7 +337,7 @@
 /* Begin PBXTargetDependency section */
 		F48E73D11977B45700982A46 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F48E73A91977B45700982A46 /* BFPaperTableViewCell */;
+			target = F48E73A91977B45700982A46 /* BFPaperCollectionViewCell */;
 			targetProxy = F48E73D01977B45700982A46 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -451,10 +447,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BFPaperTableViewCell/BFPaperTableViewCell-Prefix.pch";
-				INFOPLIST_FILE = "BFPaperTableViewCell/BFPaperTableViewCell-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "BFPaperCollectionViewCell/BFPaperCollectionViewCell-Prefix.pch";
+				INFOPLIST_FILE = "BFPaperCollectionViewCell/BFPaperCollectionViewCell-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				PRODUCT_NAME = BFPaperCollectionViewCell;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -466,10 +462,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BFPaperTableViewCell/BFPaperTableViewCell-Prefix.pch";
-				INFOPLIST_FILE = "BFPaperTableViewCell/BFPaperTableViewCell-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "BFPaperCollectionViewCell/BFPaperCollectionViewCell-Prefix.pch";
+				INFOPLIST_FILE = "BFPaperCollectionViewCell/BFPaperCollectionViewCell-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				PRODUCT_NAME = BFPaperCollectionViewCell;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -477,20 +473,20 @@
 		F48E73E01977B45700982A46 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BFPaperTableViewCell.app/BFPaperTableViewCell";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BFPaperCollectionViewCell.app/BFPaperCollectionViewCell";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BFPaperTableViewCell/BFPaperTableViewCell-Prefix.pch";
+				GCC_PREFIX_HEADER = "BFPaperCollectionViewCell/BFPaperCollectionViewCell-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "BFPaperTableViewCellTests/BFPaperTableViewCellTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "BFPaperCollectionViewCellTests/BFPaperCollectionViewCellTests-Info.plist";
+				PRODUCT_NAME = BFPaperCollectionViewCellTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -499,16 +495,16 @@
 		F48E73E11977B45700982A46 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BFPaperTableViewCell.app/BFPaperTableViewCell";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BFPaperCollectionViewCell.app/BFPaperCollectionViewCell";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BFPaperTableViewCell/BFPaperTableViewCell-Prefix.pch";
-				INFOPLIST_FILE = "BFPaperTableViewCellTests/BFPaperTableViewCellTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "BFPaperCollectionViewCell/BFPaperCollectionViewCell-Prefix.pch";
+				INFOPLIST_FILE = "BFPaperCollectionViewCellTests/BFPaperCollectionViewCellTests-Info.plist";
+				PRODUCT_NAME = BFPaperCollectionViewCellTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -517,7 +513,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F48E73A51977B45700982A46 /* Build configuration list for PBXProject "BFPaperTableViewCell" */ = {
+		F48E73A51977B45700982A46 /* Build configuration list for PBXProject "BFPaperCollectionViewCell" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F48E73DA1977B45700982A46 /* Debug */,
@@ -526,7 +522,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F48E73DC1977B45700982A46 /* Build configuration list for PBXNativeTarget "BFPaperTableViewCell" */ = {
+		F48E73DC1977B45700982A46 /* Build configuration list for PBXNativeTarget "BFPaperCollectionViewCell" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F48E73DD1977B45700982A46 /* Debug */,
@@ -535,7 +531,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F48E73DF1977B45700982A46 /* Build configuration list for PBXNativeTarget "BFPaperTableViewCellTests" */ = {
+		F48E73DF1977B45700982A46 /* Build configuration list for PBXNativeTarget "BFPaperCollectionViewCellTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F48E73E01977B45700982A46 /* Debug */,

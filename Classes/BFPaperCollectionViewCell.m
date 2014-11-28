@@ -1,5 +1,5 @@
 //
-//  BFPaperTableViewCell.m
+//  BFPaperCollectionViewCell.m
 //  BFPaperKit
 //
 //  Created by Bence Feher on 7/11/14.
@@ -28,9 +28,9 @@
 // SOFTWARE.
 
 
-#import "BFPaperTableViewCell.h"
+#import "BFPaperCollectionViewCell.h"
 
-@interface BFPaperTableViewCell ()
+@interface BFPaperCollectionViewCell ()
 @property CGPoint tapPoint;
 @property UIView *backgroundColorFadeView;
 @property CAShapeLayer *maskLayer;
@@ -45,7 +45,7 @@
 @property BOOL fadedBackgroundInAlready;
 @end
 
-@implementation BFPaperTableViewCell
+@implementation BFPaperCollectionViewCell
 // Constants used for tweaking the look/feel of:
 // -animation durations:
 static CGFloat const bfPaperCell_animationDurationConstant          = 0.2f;
@@ -63,12 +63,30 @@ static CGFloat const bfPaperCell_fadeConstant                       = 0.15f;
 
 
 #pragma mark - Default Initializers
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)init
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    self = [super init];
     if (self) {
         // Initialization code
-        [self setupBFPaperTableViewCell];
+        [self setupBFPaperCollectionViewCell];
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        // Initialization code
+        [self setupBFPaperCollectionViewCell];
+    }
+    return self;
+}
+
+- (id)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+        [self setupBFPaperCollectionViewCell];
     }
     return self;
 }
@@ -76,15 +94,14 @@ static CGFloat const bfPaperCell_fadeConstant                       = 0.15f;
 - (void)awakeFromNib
 {
     // Initialization code
-    [self setupBFPaperTableViewCell];
+    [self setupBFPaperCollectionViewCell];
 }
 
 
 #pragma mark - Setup
-- (void)setupBFPaperTableViewCell
+- (void)setupBFPaperCollectionViewCell
 {
     // Defaults:
-    self.usesSmartColor = YES;
     self.tapCircleColor = nil;
     self.backgroundFadeColor = nil;
     self.tapCircleDiameter = -1.f;
@@ -94,8 +111,6 @@ static CGFloat const bfPaperCell_fadeConstant                       = 0.15f;
     
     self.rippleAnimationQueue = [NSMutableArray array];
     self.deathRowForCircleLayers = [NSMutableArray array];
-    
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     self.layer.masksToBounds = YES;
     self.clipsToBounds = YES;
@@ -109,8 +124,6 @@ static CGFloat const bfPaperCell_fadeConstant                       = 0.15f;
     self.backgroundColorFadeView.alpha = 0;
     [self.contentView insertSubview:self.backgroundColorFadeView atIndex:0];
 
-    self.textLabel.backgroundColor = [UIColor clearColor];  // We don't want the text label to occlude our tap circles!
-
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
     tapGestureRecognizer.delegate = self;
     [self addGestureRecognizer:tapGestureRecognizer];
@@ -118,10 +131,10 @@ static CGFloat const bfPaperCell_fadeConstant                       = 0.15f;
 
 
 #pragma Parent Overides
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+- (void)setSelected:(BOOL)selected
 {
-    [super setSelected:selected animated:animated];
-    //NSLog(@"setSelected:\'%@\' animated:\'%@\'", selected ? @"YES" : @"NO", animated ? @"YES" : @"NO");
+    [super setSelected:selected];
+    //NSLog(@"setSelected:\'%@\', selected ? @"YES" : @"NO");
     
     if (!self.letBackgroundLinger) {
         return; // If we are not letting the background linger, just return as we have nothing more to do here.
@@ -142,7 +155,7 @@ static CGFloat const bfPaperCell_fadeConstant                       = 0.15f;
 
     // Lets go ahead and "reset" our cell:
     // In your subclass, this is where you would call your custom setup.
-    [self setupBFPaperTableViewCell];
+    [self setupBFPaperCollectionViewCell];
 }
 */
 
@@ -178,13 +191,6 @@ static CGFloat const bfPaperCell_fadeConstant                       = 0.15f;
 
 
 #pragma mark - Setters and Getters
-- (void)setUsesSmartColor:(BOOL)usesSmartColor
-{
-    _usesSmartColor = usesSmartColor;
-    self.tapCircleColor = nil;
-    self.backgroundFadeColor = nil;
-}
-
 - (void)setBackgroundFadeColor:(UIColor *)backgroundFadeColor
 {
     _backgroundFadeColor = [backgroundFadeColor colorWithAlphaComponent:1];
@@ -251,7 +257,7 @@ static CGFloat const bfPaperCell_fadeConstant                       = 0.15f;
     self.fadedBackgroundOutAlready = NO;
     
     if (!self.backgroundFadeColor) {
-        self.backgroundFadeColor = self.usesSmartColor ? self.textLabel.textColor : BFPAPERCELL__DUMB_FADE_COLOR;
+        self.backgroundFadeColor = BFPAPERCELL__DUMB_FADE_COLOR;
     }
     
     self.backgroundColorFadeView.frame = self.bounds;
@@ -275,7 +281,7 @@ static CGFloat const bfPaperCell_fadeConstant                       = 0.15f;
     
     // Set the fill color for the tap circle (self.animationLayer's fill color):
     if (!self.tapCircleColor) {
-        self.tapCircleColor = self.usesSmartColor ? [self.textLabel.textColor colorWithAlphaComponent:bfPaperCell_tapFillConstant] : BFPAPERCELL__DUMB_TAP_FILL_COLOR;
+        self.tapCircleColor = BFPAPERCELL__DUMB_TAP_FILL_COLOR;
     }
     
     // Calculate the tap circle's ending diameter:

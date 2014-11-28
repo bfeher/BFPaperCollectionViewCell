@@ -1,6 +1,6 @@
 //
-//  BFPaperTableViewCellTests.m
-//  BFPaperTableViewCellTests
+//  BFPaperCollectionViewCellTests.m
+//  BFPaperCollectionViewCellTests
 //
 //  Created by Bence Feher on 7/17/14.
 //  Copyright (c) 2014 Bence Feher. All rights reserved.
@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface BFPaperTableViewCellTests : XCTestCase
+@interface BFPaperCollectionViewCellTests : XCTestCase
 
 @end
 
-@implementation BFPaperTableViewCellTests
+@implementation BFPaperCollectionViewCellTests
 
 - (void)setUp
 {

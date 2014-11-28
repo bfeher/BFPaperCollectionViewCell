@@ -1,5 +1,5 @@
 //
-//  BFPaperTableViewCell.h
+//  BFPaperCollectionViewCell.h
 //  BFPaperKit
 //
 //  Created by Bence Feher on 7/11/14.
@@ -31,16 +31,13 @@
 #import <UIKit/UIKit.h>
 
 // Nice circle diameter constants:
-static const CGFloat bfPaperTableViewCell_tapCircleDiameterMedium = 462.f;
-static const CGFloat bfPaperTableViewCell_tapCircleDiameterLarge = bfPaperTableViewCell_tapCircleDiameterMedium * 1.4f;
-static const CGFloat bfPaperTableViewCell_tapCircleDiameterSmall = bfPaperTableViewCell_tapCircleDiameterMedium / 2.f;
-static const CGFloat bfPaperTableViewCell_tapCircleDiameterDefault = -1.f;
+static const CGFloat bfPaperCollectionViewCell_tapCircleDiameterMedium = 462.f;
+static const CGFloat bfPaperCollectionViewCell_tapCircleDiameterLarge = bfPaperCollectionViewCell_tapCircleDiameterMedium * 1.4f;
+static const CGFloat bfPaperCollectionViewCell_tapCircleDiameterSmall = bfPaperCollectionViewCell_tapCircleDiameterMedium / 2.f;
+static const CGFloat bfPaperCollectionViewCell_tapCircleDiameterDefault = -1.f;
 
-@interface BFPaperTableViewCell : UITableViewCell
-/** A flag to set YES to use Smart Color, or NO to use a custom color scheme. While Smart Color is recommended, customization is cool too. */
-@property (nonatomic) BOOL usesSmartColor;
-
-/** The UIColor to use for the circle which appears where you tap. NOTE: Setting this defeats the "Smart Color" ability of the tap circle. Alpha values less than 1 are recommended. */
+@interface BFPaperCollectionViewCell : UICollectionViewCell <UIGestureRecognizerDelegate>
+/** The UIColor to use for the circle which appears where you tap. Alpha values less than 1 are recommended. */
 @property UIColor *tapCircleColor;
 
 /** The UIColor to fade clear backgrounds to. 
@@ -48,10 +45,10 @@ static const CGFloat bfPaperTableViewCell_tapCircleDiameterDefault = -1.f;
 @property (nonatomic) UIColor *backgroundFadeColor;
 
 /** A CGFloat value between 0 and 1 to which the background will fade into upon selection.
-    Default is bfPaperCell_fadeConstant which is defined in BFPaperTableViewCell.m. */
+    Default is bfPaperCell_fadeConstant which is defined in BFPaperCollectionViewCell.m. */
 @property CGFloat backgroundFadeAlpha;
 
-/** A BOOL flag that determines whether or not to keep the background around after a tap, essentially "highlighting/selecting" the cell. Note that this does not trigger setSelected:! It is purely aesthetic. Also this kinda clashes with cell.selectionStyle, so by defualt the constructor sets that to UITableViewCellSelectionStyleNone.
+/** A BOOL flag that determines whether or not to keep the background around after a tap, essentially "highlighting/selecting" the cell. Note that this does not trigger setSelected:! It is purely aesthetic. Also this kinda clashes with cell.selectionStyle, so by defualt the constructor sets that to UICollectionViewCellSelectionStyleNone.
     Default is YES. */
 @property BOOL letBackgroundLinger;
 
