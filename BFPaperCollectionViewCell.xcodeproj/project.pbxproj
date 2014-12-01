@@ -449,7 +449,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BFPaperCollectionViewCell/BFPaperCollectionViewCell-Prefix.pch";
 				INFOPLIST_FILE = "BFPaperCollectionViewCell/BFPaperCollectionViewCell-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = BFPaperCollectionViewCell;
 				WRAPPER_EXTENSION = app;
 			};
@@ -464,7 +464,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BFPaperCollectionViewCell/BFPaperCollectionViewCell-Prefix.pch";
 				INFOPLIST_FILE = "BFPaperCollectionViewCell/BFPaperCollectionViewCell-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = BFPaperCollectionViewCell;
 				WRAPPER_EXTENSION = app;
 			};

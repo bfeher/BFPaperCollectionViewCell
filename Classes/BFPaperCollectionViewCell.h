@@ -5,6 +5,8 @@
 //  Created by Bence Feher on 7/11/14.
 //  Copyright (c) 2014 Bence Feher. All rights reserved.
 //
+//  Converted from BFPaperTableViewCell by Benjamin Truitt https://github.com/benvolioT
+//
 // The MIT License (MIT)
 //
 // Copyright (c) 2014 Bence Feher

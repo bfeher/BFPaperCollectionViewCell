@@ -1,6 +1,6 @@
 BFPaperCollectionViewCell
 ====================
-> A subclass of UICollectionViewCell inspired by Google's Material Design: Paper Elements. Based on [BFPaperTableViewCell](https://github.com/bfeher/BFPaperTableViewCell)
+> A subclass of UICollectionViewCell inspired by Google's Material Design: Paper Elements. Based on [BFPaperTableViewCell](https://github.com/bfeher/BFPaperTableViewCell), written by [Benjamin Truitt](https://github.com/benvolioT)
 
 About
 ---------
