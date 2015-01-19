@@ -33,9 +33,9 @@
 #import "BFPaperCollectionViewCell.h"
 
 @interface BFPaperCollectionViewCell ()
+@property CGRect fadeAndClippingMaskRect;
 @property CGPoint tapPoint;
 @property UIView *backgroundColorFadeView;
-@property CAShapeLayer *maskLayer;
 @property BOOL beganHighlight;
 @property BOOL beganSelection;
 @property BOOL haveTapped;
@@ -48,6 +48,11 @@
 @end
 
 @implementation BFPaperCollectionViewCell
+// Public consts:
+CGFloat const bfPaperCollectionViewCell_tapCircleDiameterMedium = 462.f;
+CGFloat const bfPaperCollectionViewCell_tapCircleDiameterLarge = bfPaperCollectionViewCell_tapCircleDiameterMedium * 1.4f;
+CGFloat const bfPaperCollectionViewCell_tapCircleDiameterSmall = bfPaperCollectionViewCell_tapCircleDiameterMedium / 2.f;
+CGFloat const bfPaperCollectionViewCell_tapCircleDiameterDefault = -1.f;
 // Constants used for tweaking the look/feel of:
 // -animation durations:
 static CGFloat const bfPaperCell_animationDurationConstant          = 0.2f;
@@ -55,7 +60,7 @@ static CGFloat const bfPaperCell_tapCircleGrowthDurationConstant    = bfPaperCel
 static CGFloat const bfPaperCell_bgFadeOutAnimationDurationConstant = 0.75f;
 // -the tap-circle's size:
 static CGFloat const bfPaperCell_tapCircleDiameterStartValue        = 5.f;  // for the mask
-static CGFloat const bfPaperCell_tapCircleGrowthBurst               = 40.f;
+//static CGFloat const bfPaperCell_tapCircleGrowthBurst               = 40.f;   // No longer using this, but leaving this here for those who want it.
 // -the tap-circle's beauty:
 static CGFloat const bfPaperCell_tapFillConstant                    = 0.25f;
 static CGFloat const bfPaperCell_fadeConstant                       = 0.15f;
@@ -117,8 +122,6 @@ static CGFloat const bfPaperCell_fadeConstant                       = 0.15f;
     self.layer.masksToBounds = YES;
     self.clipsToBounds = YES;
     
-    self.maskLayer.frame = self.frame;
-    
     // Setup background fade layer:
     self.backgroundColorFadeView = [[UIView alloc] init];
     self.backgroundColorFadeView.frame = self.bounds;
@@ -160,6 +163,17 @@ static CGFloat const bfPaperCell_fadeConstant                       = 0.15f;
     [self setupBFPaperCollectionViewCell];
 }
 */
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    self.fadeAndClippingMaskRect = CGRectMake(self.bounds.origin.x, self.bounds.origin.y , self.bounds.size.width, self.bounds.size.height);
+    self.backgroundColorFadeView.frame = self.fadeAndClippingMaskRect;
+    
+    [self setNeedsDisplay];
+    [self.layer setNeedsDisplay];
+}
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -262,7 +276,6 @@ static CGFloat const bfPaperCell_fadeConstant                       = 0.15f;
         self.backgroundFadeColor = BFPAPERCELL__DUMB_FADE_COLOR;
     }
     
-    self.backgroundColorFadeView.frame = self.bounds;
     self.backgroundColorFadeView.backgroundColor = self.backgroundFadeColor;
     
     [UIView animateWithDuration:bfPaperCell_animationDurationConstant
@@ -317,7 +330,7 @@ static CGFloat const bfPaperCell_fadeConstant                       = 0.15f;
     
     // Create a mask:
     CAShapeLayer *mask = [CAShapeLayer layer];
-    mask.path = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:self.layer.cornerRadius].CGPath;
+    mask.path = [UIBezierPath bezierPathWithRoundedRect:self.fadeAndClippingMaskRect cornerRadius:self.layer.cornerRadius].CGPath;
     mask.fillColor = [UIColor blackColor].CGColor;
     mask.strokeColor = [UIColor clearColor].CGColor;
     mask.borderColor = [UIColor clearColor].CGColor;
@@ -392,7 +405,7 @@ static CGFloat const bfPaperCell_fadeConstant                       = 0.15f;
     UIBezierPath *startingCirclePath = [UIBezierPath bezierPathWithRoundedRect:startingRectSizerView.frame cornerRadius:tapCircleDiameterStartValue / 2.f];
     
     // Calculate mask ending path:
-    CGFloat tapCircleDiameterEndValue = tapCircleDiameterStartValue + bfPaperCell_tapCircleGrowthBurst;
+    CGFloat tapCircleDiameterEndValue = self.fadeAndClippingMaskRect.size.width + tapCircleDiameterStartValue;
     
     UIView *endingRectSizerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tapCircleDiameterEndValue, tapCircleDiameterEndValue)];
     endingRectSizerView.center = tapCircleLayerSizerView.center;

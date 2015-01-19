@@ -30,6 +30,16 @@
 // SOFTWARE.
 
 
+/****************************************************/
+/*                  !!! NOTE !!!                    */
+/* This file is basically copypasta of              */
+/* BFPaperTableViewCell's BFPaperViewController.m.  */
+/* There is a lot of code here that isn't used for  */
+/* this demo but is used in the                     */
+/* BFPaperTableViewCell version. Sorry and enjoy.   */
+/****************************************************/
+
+
 #import "BFPaperViewController.h"
 // Classes:
 #import "BFPaperCollectionViewCell.h"

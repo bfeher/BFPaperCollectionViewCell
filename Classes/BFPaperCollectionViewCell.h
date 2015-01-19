@@ -33,10 +33,10 @@
 #import <UIKit/UIKit.h>
 
 // Nice circle diameter constants:
-static const CGFloat bfPaperCollectionViewCell_tapCircleDiameterMedium = 462.f;
-static const CGFloat bfPaperCollectionViewCell_tapCircleDiameterLarge = bfPaperCollectionViewCell_tapCircleDiameterMedium * 1.4f;
-static const CGFloat bfPaperCollectionViewCell_tapCircleDiameterSmall = bfPaperCollectionViewCell_tapCircleDiameterMedium / 2.f;
-static const CGFloat bfPaperCollectionViewCell_tapCircleDiameterDefault = -1.f;
+extern const CGFloat bfPaperCollectionViewCell_tapCircleDiameterMedium;
+extern const CGFloat bfPaperCollectionViewCell_tapCircleDiameterLarge;
+extern const CGFloat bfPaperCollectionViewCell_tapCircleDiameterSmall;
+extern const CGFloat bfPaperCollectionViewCell_tapCircleDiameterDefault;
 
 @interface BFPaperCollectionViewCell : UICollectionViewCell <UIGestureRecognizerDelegate>
 /** The UIColor to use for the circle which appears where you tap. Alpha values less than 1 are recommended. */

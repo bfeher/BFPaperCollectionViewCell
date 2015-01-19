@@ -1,5 +1,7 @@
 BFPaperCollectionViewCell
 ====================
+[![CocoaPods](https://img.shields.io/cocoapods/v/BFPaperCollectionViewCell.svg?style=flat)](https://github.com/bfeher/BFPaperCollectionViewCell)
+
 > A subclass of UICollectionViewCell inspired by Google's Material Design: Paper Elements. Based on [BFPaperTableViewCell](https://github.com/bfeher/BFPaperTableViewCell), written by [Benjamin Truitt](https://github.com/benvolioT)
 
 About
@@ -71,7 +73,7 @@ Learn more at http://cocoapods.org
 Add this to your podfile to add _BFPaperCollectionViewCell_ to your project.
 ```ruby
 platform :ios, '7.1'
-pod 'BFPaperCollectionViewCell', '~> 1.3.2'
+pod 'BFPaperCollectionViewCell', '~> 1.4.1'
 ```
 
 
