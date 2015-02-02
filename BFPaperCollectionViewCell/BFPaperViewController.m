@@ -42,7 +42,7 @@
 
 #import "BFPaperViewController.h"
 // Classes:
-#import "BFPaperCollectionViewCell.h"
+#import "SubclassOfPaperCollectionViewCell.h"
 // Pods:
 #import "UIColor+BFPaperColors.h"
 
@@ -70,7 +70,7 @@
     self.title = @"BFPaperCollectionViewCell";
     
     // Register BFPaperCollectionViewCell for our tableView:
-    [self.collectionView registerClass:[BFPaperCollectionViewCell class] forCellWithReuseIdentifier:@"BFPaperCell"];
+    [self.collectionView registerClass:[SubclassOfPaperCollectionViewCell class] forCellWithReuseIdentifier:@"BFPaperCell"];
     
     // Fill up an array with all the basic BFPaperColors:
     self.colors = @[[UIColor paperColorRed], [UIColor paperColorPink], [UIColor paperColorPurple], [UIColor paperColorDeepPurple], [UIColor paperColorIndigo], [UIColor paperColorBlue], [UIColor paperColorLightBlue], [UIColor paperColorCyan], [UIColor paperColorTeal], [UIColor paperColorGreen], [UIColor paperColorLightGreen], [UIColor paperColorLime], [UIColor paperColorYellow], [UIColor paperColorAmber], [UIColor  paperColorDeepOrange], [UIColor paperColorBrown], [UIColor paperColorGray], [UIColor paperColorBlueGray], [UIColor paperColorGray700], [UIColor paperColorGray700]];
@@ -135,7 +135,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    BFPaperCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BFPaperCell" forIndexPath:indexPath];
+    SubclassOfPaperCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BFPaperCell" forIndexPath:indexPath];
     
     // Configure the cell...
     
@@ -161,19 +161,19 @@
         cell.backgroundColor = [UIColor clearColor];
         //cell.textLabel.textColor = [UIColor paperColorLimeA400];
         //cell.textLabel.text = @"Clear";
-        cell.tapCircleDiameter = bfPaperCollectionViewCell_tapCircleDiameterDefault;
+        cell.tapCircleDiameter = bfPaperCollectionViewCell_tapCircleDiameterFull;
     }
     // The rest of the first half should be white with colored text:
     else if (indexPath.row < self.colors.count){
         cell.backgroundColor = [UIColor whiteColor];
         //cell.textLabel.textColor = [self.colors objectAtIndex:indexPath.row];
-        cell.tapCircleDiameter = bfPaperCollectionViewCell_tapCircleDiameterDefault;
+        cell.tapCircleDiameter = bfPaperCollectionViewCell_tapCircleDiameterFull;
     }
     // After that, just color their background and give them white text:
     else if (!(indexPath.row > (self.colors.count * 2) - 3)) {
         cell.backgroundColor = [self.colors objectAtIndex:indexPath.row % self.colors.count];
         //cell.textLabel.textColor = [UIColor whiteColor];
-        cell.tapCircleDiameter = bfPaperCollectionViewCell_tapCircleDiameterDefault;
+        cell.tapCircleDiameter = bfPaperCollectionViewCell_tapCircleDiameterFull;
     }
     // Customize last two cells:
     else {//if (indexPath.row > (self.colors.count * 2) - 3) {
@@ -183,7 +183,6 @@
         cell.tapCircleDiameter = bfPaperCollectionViewCell_tapCircleDiameterSmall;
         cell.tapCircleColor = [[UIColor paperColorLimeA400] colorWithAlphaComponent:0.7];
         cell.backgroundFadeColor = [UIColor whiteColor];
-        cell.backgroundFadeAlpha = 1;
         cell.letBackgroundLinger = NO;
     }
     

@@ -46,8 +46,7 @@
     self.tapCircleColor = [[UIColor paperColorLimeA400] colorWithAlphaComponent:0.6f];
     self.tapCircleDiameter = bfPaperCollectionViewCell_tapCircleDiameterSmall;
     self.rippleFromTapLocation = YES;
-    self.backgroundFadeColor = [UIColor whiteColor];
-    self.backgroundFadeAlpha = 0.2f;
+    self.backgroundFadeColor = [UIColor colorWithWhite:1 alpha:0.2f];
     self.letBackgroundLinger = YES;
     
     // Other setup (eg. text labels, image views, etc.):

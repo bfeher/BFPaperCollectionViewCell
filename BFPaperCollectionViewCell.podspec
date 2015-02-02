@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "BFPaperCollectionViewCell"
-  s.version      = "1.4.1"
+  s.version      = "2.1.2"
   s.summary      = "A flat button for use in a collection view cell inspired by Google Material Design's Paper theme."
   s.homepage     = "https://github.com/bfeher/BFPaperCollectionViewCell"
   s.license      = { :type => 'MIT', :file => 'LICENSE.md' }

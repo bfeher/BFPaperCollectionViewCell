@@ -36,28 +36,43 @@
 extern const CGFloat bfPaperCollectionViewCell_tapCircleDiameterMedium;
 extern const CGFloat bfPaperCollectionViewCell_tapCircleDiameterLarge;
 extern const CGFloat bfPaperCollectionViewCell_tapCircleDiameterSmall;
+extern const CGFloat bfPaperCollectionViewCell_tapCircleDiameterFull;
 extern const CGFloat bfPaperCollectionViewCell_tapCircleDiameterDefault;
 
 @interface BFPaperCollectionViewCell : UICollectionViewCell <UIGestureRecognizerDelegate>
-/** The UIColor to use for the circle which appears where you tap. Alpha values less than 1 are recommended. */
-@property UIColor *tapCircleColor;
 
-/** The UIColor to fade clear backgrounds to. 
-    NOTE: Alpha values are ignored as they are controlled via the property: `backgroundFadeColor`. */
-@property (nonatomic) UIColor *backgroundFadeColor;
+#pragma mark - Properties
+#pragma mark Animation
+/** A CGFLoat representing the duration of the animations which take place on touch DOWN! Default is 0.25f seconds. (Go Steelers) */
+@property CGFloat touchDownAnimationDuration;
+/** A CGFLoat representing the duration of the animations which take place on touch UP! Default is 2 * touchDownAnimationDuration seconds. */
+@property CGFloat touchUpAnimationDuration;
 
-/** A CGFloat value between 0 and 1 to which the background will fade into upon selection.
-    Default is bfPaperCell_fadeConstant which is defined in BFPaperCollectionViewCell.m. */
-@property CGFloat backgroundFadeAlpha;
 
-/** A BOOL flag that determines whether or not to keep the background around after a tap, essentially "highlighting/selecting" the cell. Note that this does not trigger setSelected:! It is purely aesthetic. Also this kinda clashes with cell.selectionStyle, so by defualt the constructor sets that to UICollectionViewCellSelectionStyleNone.
-    Default is YES. */
-@property BOOL letBackgroundLinger;
+#pragma mark Prettyness and Behaviour
+/** A CGFLoat representing the diameter of the tap-circle as soon as it spawns, before it grows. Default is 5.f. */
+@property CGFloat tapCircleDiameterStartValue;
 
-/** The CGFloat value representing the Diameter of the tap-circle. By default it will be the result of MAX(self.frame.width, self.frame.height). Any value less than zero will result in default being used. The constants: tapCircleDiameterLarge, tapCircleDiameterMedium, and tapCircleDiameterSmall are also available for use. */
+/** The CGFloat value representing the Diameter of the tap-circle. By default it will be the result of MAX(self.frame.width, self.frame.height). tapCircleDiameterFull will calculate a circle that always fills the entire view. Any value less than or equal to tapCircleDiameterFull will result in default being used. The constants: tapCircleDiameterLarge, tapCircleDiameterMedium, and tapCircleDiameterSmall are also available for use. */
 @property CGFloat tapCircleDiameter;
 
-/** A flag to set to YES to have the tap-circle ripple from point of touch. If this is set to NO, the tap-circle will always ripple from the center of the button. Default is YES. */
-@property BOOL rippleFromTapLocation;
+/** The CGFloat value representing how much we should increase the diameter of the tap-circle by when we burst it. Default is 100.f. */
+@property CGFloat tapCircleBurstAmount;
+
+/** The UIColor to use for the circle which appears where you tap. NOTE: Setting this defeats the "Smart Color" ability of the tap circle. Alpha values less than 1 are recommended. */
+@property UIColor *tapCircleColor;
+
+/** The UIColor to fade clear backgrounds to. NOTE: Setting this defeats the "Smart Color" ability of the background fade. Alpha values less than 1 are recommended. */
+@property UIColor *backgroundFadeColor;
+
+/** A flag to set to YES to have the tap-circle ripple from point of touch. If this is set to NO, the tap-circle will always ripple from the center of the tab. Default is YES. */
+@property (nonatomic) BOOL rippleFromTapLocation;
+
+/** A BOOL flag that determines whether or not to keep the background around after a tap, essentially "highlighting/selecting" the cell. Note that this does not trigger setSelected:! It is purely aesthetic. Also this kinda clashes with cell.selectionStyle, so by defualt the constructor sets that to UITableViewCellSelectionStyleNone.
+ Default is YES. */
+@property BOOL letBackgroundLinger;
+
+/** A BOOL flag indicating whether or not to always complete a full animation cycle (bg fade in, tap-circle grow and burst, bg fade out) before starting another one. NO will behave just like the other BFPaper controls, tapping rapidly spawns many circles which all fade out in turn. Default is YES. */
+@property BOOL alwaysCompleteFullAnimation;
 
 @end
