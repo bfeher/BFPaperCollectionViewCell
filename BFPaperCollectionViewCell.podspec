@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/bfeher/BFPaperCollectionViewCell"
   s.license      = { :type => 'MIT', :file => 'LICENSE.md' }
   s.author       = { "Bence Feher" => "ben.feher@gmail.com" }
-  s.source       = { :git => "https://github.com/bfeher/BFPaperCollectionViewCell.git", :tag => "1.4.1" }
+  s.source       = { :git => "https://github.com/bfeher/BFPaperCollectionViewCell.git", :tag => "2.1.2" }
   s.platform     = :ios, '7.0'
   s.dependency   'UIColor+BFPaperColors'
  
