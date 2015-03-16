@@ -36,15 +36,12 @@
 @property CGRect fadeAndClippingMaskRect;
 @property CGPoint tapPoint;
 @property CALayer *backgroundColorFadeLayer;
-@property BOOL beganHighlight;
-@property BOOL beganSelection;
-@property BOOL haveTapped;
-@property BOOL letGo;
 @property BOOL growthFinished;
+@property BOOL touchCancelledOrEnded;
 @property NSMutableArray *rippleAnimationQueue;
 @property NSMutableArray *deathRowForCircleLayers;  // This is where old circle layers go to be killed :(
-@property BOOL fadedBackgroundOutAlready;
-@property BOOL fadedBackgroundInAlready;
+//@property BOOL fadedBackgroundOutAlready;
+//@property BOOL fadedBackgroundInAlready;
 @property UIColor *dumbTapCircleFillColor;
 @property UIColor *dumbBackgroundFadeColor;
 @property (nonatomic, copy) void (^removeEffectsQueue)();
@@ -99,7 +96,6 @@ CGFloat const bfPaperCollectionViewCell_tapCircleDiameterDefault = -2.f;
 - (void)setupBFPaperCollectionViewCell
 {
     // Defaults:
-    self.letGo = YES;
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Defaults for visual properties:                                                                                      //
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -117,6 +113,7 @@ CGFloat const bfPaperCollectionViewCell_tapCircleDiameterDefault = -2.f;
     self.dumbBackgroundFadeColor     = [UIColor colorWithWhite:0.3 alpha:0.15f];
     self.letBackgroundLinger         = YES;
     self.alwaysCompleteFullAnimation = YES;
+    self.tapDelay                    = 0.1f;
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     self.rippleAnimationQueue = [NSMutableArray array];
@@ -183,17 +180,35 @@ CGFloat const bfPaperCollectionViewCell_tapCircleDiameterDefault = -2.f;
 {
     [super touchesBegan:touches withEvent:event];
 
-    self.letGo = NO;
+    self.touchCancelledOrEnded = NO;
     self.growthFinished = NO;
-    self.fadedBackgroundOutAlready = NO;
     
-    [self fadeBackgroundIn];
-    [self growTapCircle];
+    if (self.tapDelay > 0) {
+        // Dispatch on main thread to delay animations
+        dispatch_main_after(self.tapDelay, ^{
+            if (!self.touchCancelledOrEnded) {
+                [self fadeBackgroundIn];
+                [self growTapCircle];
+            }
+            else {
+                [self setSelected:NO];
+                [self fadeBGOut];
+            }
+        });
+        
+    }
+    else {
+        // Avoid dispatching if there's no delay
+        [self fadeBackgroundIn];
+        [self growTapCircle];
+    }
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesEnded:touches withEvent:event];
+    
+    self.touchCancelledOrEnded = YES;
     
     [self removeCircle];
     if (!self.letBackgroundLinger) {
@@ -204,6 +219,8 @@ CGFloat const bfPaperCollectionViewCell_tapCircleDiameterDefault = -2.f;
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesCancelled:touches withEvent:event];
+
+    self.touchCancelledOrEnded = YES;
 
     [self removeCircle];
     [self removeBackground];
@@ -216,8 +233,6 @@ CGFloat const bfPaperCollectionViewCell_tapCircleDiameterDefault = -2.f;
     CGPoint location = [touch locationInView:self];
     //NSLog(@"location: x = %0.2f, y = %0.2f", location.x, location.y);
     self.tapPoint = location;
-    
-    self.haveTapped = YES;
     
     return NO;  // Disallow recognition of tap gestures. We just needed this to grab that tasty tap location.
 }
@@ -247,7 +262,6 @@ CGFloat const bfPaperCollectionViewCell_tapCircleDiameterDefault = -2.f;
 - (void)removeCircle
 {
     if (!self.alwaysCompleteFullAnimation) {
-        self.letGo = YES;
         [self burstTapCircle];
     }
     else {
@@ -255,7 +269,6 @@ CGFloat const bfPaperCollectionViewCell_tapCircleDiameterDefault = -2.f;
         // Special thanks to github user @ThePantsThief for providing this code!    //
         //////////////////////////////////////////////////////////////////////////////
         if (self.growthFinished) {
-            self.letGo = YES;
             [self burstTapCircle];
         } else {
             void (^oldCompletion)() = self.removeEffectsQueue;
@@ -264,7 +277,6 @@ CGFloat const bfPaperCollectionViewCell_tapCircleDiameterDefault = -2.f;
             self.removeEffectsQueue = ^void() {
                 if (oldCompletion)
                     oldCompletion();
-                weakSelf.letGo = YES;
                 [weakSelf burstTapCircle];
             };
         }
@@ -274,40 +286,21 @@ CGFloat const bfPaperCollectionViewCell_tapCircleDiameterDefault = -2.f;
 - (void)removeBackground
 {
     if (!self.alwaysCompleteFullAnimation) {
-        if (self.fadedBackgroundOutAlready) {
-            return;
-        }
-        self.fadedBackgroundOutAlready = YES;
-        self.fadedBackgroundInAlready = NO;
-        
-        [self fadeBGOutAndBringShadowBackToStart];
+        [self fadeBGOut];
     }
     else {
         //////////////////////////////////////////////////////////////////////////////
         // Special thanks to github user @ThePantsThief for providing this code!    //
         //////////////////////////////////////////////////////////////////////////////
         if (self.growthFinished) {
-            if (self.fadedBackgroundOutAlready) {
-                return;
-            }
-            self.fadedBackgroundOutAlready = YES;
-            self.fadedBackgroundInAlready = NO;
-            
-            [self fadeBGOutAndBringShadowBackToStart];
+            [self fadeBGOut];
         } else {
             void (^oldCompletion)() = self.removeEffectsQueue;
             __weak typeof(self) weakSelf = self;
-            
             self.removeEffectsQueue = ^void() {
                 if (oldCompletion)
                     oldCompletion();
-                if (weakSelf.fadedBackgroundOutAlready) {
-                    return;
-                }
-                weakSelf.fadedBackgroundOutAlready = YES;
-                weakSelf.fadedBackgroundInAlready = NO;
-                
-                [weakSelf fadeBGOutAndBringShadowBackToStart];
+                [weakSelf fadeBGOut];
             };
         }
     }
@@ -315,12 +308,6 @@ CGFloat const bfPaperCollectionViewCell_tapCircleDiameterDefault = -2.f;
 
 - (void)fadeBackgroundIn
 {
-    if (self.fadedBackgroundInAlready) {
-        return;
-    }
-    self.fadedBackgroundInAlready = YES;
-    self.fadedBackgroundOutAlready = NO;
-    
     if (!self.backgroundFadeColor) {
         self.backgroundFadeColor = self.dumbBackgroundFadeColor;
     }
@@ -426,7 +413,7 @@ CGFloat const bfPaperCollectionViewCell_tapCircleDiameterDefault = -2.f;
     [tapCircle addAnimation:fadeIn forKey:@"opacityAnimation"];
 }
 
-- (void)fadeBGOutAndBringShadowBackToStart
+- (void)fadeBGOut
 {
     //NSLog(@"fading bg");
     
@@ -453,6 +440,18 @@ CGFloat const bfPaperCollectionViewCell_tapCircleDiameterDefault = -2.f;
 {
     //NSLog(@"expanding a bit more");
     
+    if (1 > self.rippleAnimationQueue.count) {
+        return; // We don't have any circles to burst, we can just leave and ponder how and why we got here in this state.
+    }
+    
+    // Get the next tap circle to expand:
+    CAShapeLayer *tapCircle = [self.rippleAnimationQueue firstObject];
+    if (self.rippleAnimationQueue.count > 0) {
+        [self.rippleAnimationQueue removeObjectAtIndex:0];
+    }
+    [self.deathRowForCircleLayers addObject:tapCircle];
+    
+    
     // Calculate the tap circle's ending diameter:
     CGFloat tapCircleFinalDiameter = [self calculateTapCircleFinalDiameter];
     tapCircleFinalDiameter += self.tapCircleBurstAmount;
@@ -462,13 +461,6 @@ CGFloat const bfPaperCollectionViewCell_tapCircleDiameterDefault = -2.f;
     
     // Create ending circle path for mask:
     UIBezierPath *endingCirclePath = [UIBezierPath bezierPathWithRoundedRect:endingRectSizerView.frame cornerRadius:tapCircleFinalDiameter / 2.f];
-    
-    // Get the next tap circle to expand:
-    CAShapeLayer *tapCircle = [self.rippleAnimationQueue firstObject];
-    if (self.rippleAnimationQueue.count > 0) {
-        [self.rippleAnimationQueue removeObjectAtIndex:0];
-    }
-    [self.deathRowForCircleLayers addObject:tapCircle];
     
     
     CGPathRef startingPath = tapCircle.path;
@@ -523,6 +515,15 @@ CGFloat const bfPaperCollectionViewCell_tapCircleDiameterDefault = -2.f;
         finalDiameter = MAX(self.frame.size.width, self.frame.size.height);
     }
     return finalDiameter;
+}
+
+
+#pragma mark - Helpers
+static void dispatch_main_after(NSTimeInterval delay, void (^block)(void))
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        block();
+    });
 }
 #pragma mark -
 

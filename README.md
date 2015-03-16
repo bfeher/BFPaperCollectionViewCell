@@ -43,6 +43,9 @@ A BOOL flag that determines whether or not to keep the background around after a
 `BOOL alwaysCompleteFullAnimation` <br />
 A BOOL flag indicating whether or not to always complete a full animation cycle (bg fade in, tap-circle grow and burst, bg fade out) before starting another one. NO will behave just like the other BFPaper controls, tapping rapidly spawns many circles which all fade out in turn. Default is `YES`.
 
+`CGFloat tapDelay` <br />
+A CGFLoat to set the amount of time in seconds to delay the tap event / trigger to spawn circles. For example, if the tapDelay is set to `1.f`, you need to press and hold the cell for 1 second to trigger spawning a circle. Default is `0.1f`.
+
 
 Usage
 ---------
@@ -87,7 +90,7 @@ Learn more at http://cocoapods.org
 Add this to your podfile to add _BFPaperCollectionViewCell_ to your project.
 ```ruby
 platform :ios, '7.1'
-pod 'BFPaperCollectionViewCell', '~> 2.1.2'
+pod 'BFPaperCollectionViewCell', '~> 2.2.2'
 ```
 
 
