@@ -49,6 +49,9 @@
     self.backgroundFadeColor = [UIColor colorWithWhite:1 alpha:0.2f];
     self.letBackgroundLinger = YES;
     
+//    CGRect maskRect = CGRectMake(5, 5, 10, 10);
+//    self.maskPath = [UIBezierPath bezierPathWithRoundedRect:maskRect cornerRadius:5.f];    // Just to show this property exists.
+
     // Other setup (eg. text labels, image views, etc.):
 }
 

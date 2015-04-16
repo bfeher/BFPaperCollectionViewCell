@@ -46,6 +46,9 @@ A BOOL flag indicating whether or not to always complete a full animation cycle 
 `CGFloat tapDelay` <br />
 A CGFLoat to set the amount of time in seconds to delay the tap event / trigger to spawn circles. For example, if the tapDelay is set to `1.f`, you need to press and hold the cell for 1 second to trigger spawning a circle. Default is `0.1f`.
 
+`UIBezierPath *maskPath`<br />
+A UIBezierPath you can set to override the mask path of the ripples and background fade. Set this if you have a custom path for your cell. If this is `nil`, BFPaperTableViewCell will try its best to provide a correct mask. Default is `nil`.
+
 
 Usage
 ---------
@@ -90,7 +93,7 @@ Learn more at http://cocoapods.org
 Add this to your podfile to add _BFPaperCollectionViewCell_ to your project.
 ```ruby
 platform :ios, '7.1'
-pod 'BFPaperCollectionViewCell', '~> 2.2.2'
+pod 'BFPaperCollectionViewCell', '~> 2.3.2'
 ```
 
 

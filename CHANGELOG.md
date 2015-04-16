@@ -2,8 +2,12 @@ BFPaperCollectionViewCell
 ====================
 [![CocoaPods](https://img.shields.io/cocoapods/v/BFPaperCollectionViewCell.svg?style=flat)](https://github.com/bfeher/BFPaperCollectionViewCell)
 
-> Note that this changelog was started very late, at roughly the time between version 2.1.17 and 2.2.2. Previous changes are lost, forever to be unknown.
+> Note that this changelog was started very late, at roughly the time between version 2.1.17 and 2.2.2. Non consecutive jumps in changelog mean that there were incremental builds that weren't released as a pod, typically while solving a problem.
 
+
+2.3.2
+---------
++ + Added new property, UIBezierPath *maskPath.
 
 
 2.2.2
