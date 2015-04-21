@@ -93,7 +93,7 @@ Learn more at http://cocoapods.org
 Add this to your podfile to add _BFPaperCollectionViewCell_ to your project.
 ```ruby
 platform :ios, '7.1'
-pod 'BFPaperCollectionViewCell', '~> 2.3.2'
+pod 'BFPaperCollectionViewCell', '~> 2.3.3'
 ```
 
 

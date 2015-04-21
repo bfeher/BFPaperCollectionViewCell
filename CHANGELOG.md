@@ -5,6 +5,11 @@ BFPaperCollectionViewCell
 > Note that this changelog was started very late, at roughly the time between version 2.1.17 and 2.2.2. Non consecutive jumps in changelog mean that there were incremental builds that weren't released as a pod, typically while solving a problem.
 
 
+2.3.3
+---------
++ ^ Updated pods.
+
+
 2.3.2
 ---------
 + + Added new property, UIBezierPath *maskPath.
