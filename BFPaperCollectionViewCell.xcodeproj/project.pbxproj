@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C252AB3C7E6944848065E9E3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB931C51F2904B9DB9C8D5D4 /* libPods.a */; };
+		2213827F7C41F57E3D63EB7A /* libPods-BFPaperCollectionViewCell.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82C47142BB01614AC24B5A89 /* libPods-BFPaperCollectionViewCell.a */; };
 		F42B5BA91978DD0000D6F4B5 /* BFPaperCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F42B5BA81978DD0000D6F4B5 /* BFPaperCollectionViewCell.m */; };
 		F4533CD81A157DA500DF9E50 /* SubclassOfPaperCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4533CD71A157DA500DF9E50 /* SubclassOfPaperCollectionViewCell.m */; };
 		F48E73AE1977B45700982A46 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48E73AD1977B45700982A46 /* Foundation.framework */; };
@@ -36,9 +36,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		22A0C51F80BC08B279E64E78 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		50256C2DBF46E09557E5A3C4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		AB931C51F2904B9DB9C8D5D4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B75D3CFCDF2E4F833C62F6C /* Pods-BFPaperCollectionViewCell.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BFPaperCollectionViewCell.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BFPaperCollectionViewCell/Pods-BFPaperCollectionViewCell.debug.xcconfig"; sourceTree = "<group>"; };
+		82C47142BB01614AC24B5A89 /* libPods-BFPaperCollectionViewCell.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BFPaperCollectionViewCell.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E90F114846399EDCC7FDA46C /* Pods-BFPaperCollectionViewCell.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BFPaperCollectionViewCell.release.xcconfig"; path = "Pods/Target Support Files/Pods-BFPaperCollectionViewCell/Pods-BFPaperCollectionViewCell.release.xcconfig"; sourceTree = "<group>"; };
 		F42B5BA71978DD0000D6F4B5 /* BFPaperCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BFPaperCollectionViewCell.h; path = ../Classes/BFPaperCollectionViewCell.h; sourceTree = "<group>"; };
 		F42B5BA81978DD0000D6F4B5 /* BFPaperCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BFPaperCollectionViewCell.m; path = ../Classes/BFPaperCollectionViewCell.m; sourceTree = "<group>"; };
 		F4533CD61A157DA500DF9E50 /* SubclassOfPaperCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubclassOfPaperCollectionViewCell.h; sourceTree = "<group>"; };
@@ -71,7 +71,7 @@
 				F48E73B01977B45700982A46 /* CoreGraphics.framework in Frameworks */,
 				F48E73B21977B45700982A46 /* UIKit.framework in Frameworks */,
 				F48E73AE1977B45700982A46 /* Foundation.framework in Frameworks */,
-				C252AB3C7E6944848065E9E3 /* libPods.a in Frameworks */,
+				2213827F7C41F57E3D63EB7A /* libPods-BFPaperCollectionViewCell.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,11 +88,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D37601D0F6742D463340DF2D /* Pods */ = {
+		DD9A394A20871BDC788DFC69 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				22A0C51F80BC08B279E64E78 /* Pods.debug.xcconfig */,
-				50256C2DBF46E09557E5A3C4 /* Pods.release.xcconfig */,
+				0B75D3CFCDF2E4F833C62F6C /* Pods-BFPaperCollectionViewCell.debug.xcconfig */,
+				E90F114846399EDCC7FDA46C /* Pods-BFPaperCollectionViewCell.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -105,7 +105,7 @@
 				F48E73D21977B45700982A46 /* BFPaperCollectionViewCellTests */,
 				F48E73AC1977B45700982A46 /* Frameworks */,
 				F48E73AB1977B45700982A46 /* Products */,
-				D37601D0F6742D463340DF2D /* Pods */,
+				DD9A394A20871BDC788DFC69 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,7 +125,7 @@
 				F48E73AF1977B45700982A46 /* CoreGraphics.framework */,
 				F48E73B11977B45700982A46 /* UIKit.framework */,
 				F48E73CC1977B45700982A46 /* XCTest.framework */,
-				AB931C51F2904B9DB9C8D5D4 /* libPods.a */,
+				82C47142BB01614AC24B5A89 /* libPods-BFPaperCollectionViewCell.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -191,12 +191,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F48E73DC1977B45700982A46 /* Build configuration list for PBXNativeTarget "BFPaperCollectionViewCell" */;
 			buildPhases = (
-				D3F7EFDC51654A9C9EAC3917 /* Check Pods Manifest.lock */,
+				94D6C07C052706F58C8B34F3 /* 📦 Check Pods Manifest.lock */,
 				F48E73A61977B45700982A46 /* Sources */,
 				F48E73A71977B45700982A46 /* Frameworks */,
 				F4FBB1D31A6C84D800154E09 /* ShellScript */,
 				F48E73A81977B45700982A46 /* Resources */,
-				2EB96EBAFF054B3D87DCD202 /* Copy Pods Resources */,
+				5D6E34D3126CCD804BC1CEA0 /* 📦 Embed Pods Frameworks */,
+				CFFA5EE124AFFB2F9BC9327C /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -281,34 +282,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2EB96EBAFF054B3D87DCD202 /* Copy Pods Resources */ = {
+		5D6E34D3126CCD804BC1CEA0 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BFPaperCollectionViewCell/Pods-BFPaperCollectionViewCell-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D3F7EFDC51654A9C9EAC3917 /* Check Pods Manifest.lock */ = {
+		94D6C07C052706F58C8B34F3 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CFFA5EE124AFFB2F9BC9327C /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BFPaperCollectionViewCell/Pods-BFPaperCollectionViewCell-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F4FBB1D31A6C84D800154E09 /* ShellScript */ = {
@@ -456,7 +472,7 @@
 		};
 		F48E73DD1977B45700982A46 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 22A0C51F80BC08B279E64E78 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 0B75D3CFCDF2E4F833C62F6C /* Pods-BFPaperCollectionViewCell.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -471,7 +487,7 @@
 		};
 		F48E73DE1977B45700982A46 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 50256C2DBF46E09557E5A3C4 /* Pods.release.xcconfig */;
+			baseConfigurationReference = E90F114846399EDCC7FDA46C /* Pods-BFPaperCollectionViewCell.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

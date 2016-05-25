@@ -6,7 +6,7 @@ BFPaperCollectionViewCell
 
 
 
-2.3.3.1
+2.3.4
 ---------
 + Migrated to Cocoapods 1.0.
 
